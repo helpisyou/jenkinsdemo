@@ -20,7 +20,7 @@ pipeline{
         stage('Git'){
           steps{
 //            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/helpisyou/jenkinsdemo.git'
-              git branch: '${BRANCH}', 'https://github.com/helpisyou/jenkinsdemo.git'
+              git branch: '${BRANCH}', url: 'https://github.com/helpisyou/jenkinsdemo.git'
           }
         }
 
