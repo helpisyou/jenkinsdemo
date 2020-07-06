@@ -28,8 +28,10 @@ pipeline{
         stage('Deploy to Kubernetes') {
           steps {
             container('kubectl') {
-              step([kubernetesDeploy configs: 'busybox.yaml', kubeConfig: [path: ''], kubeconfigId: '', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-])
+              step(
+withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'believe-prod', contextName: '', credentialsId: 'cert_k8s', namespace: 'cicd', serverUrl: 'https://kubernetes.default.svc.cluster.local']]) {
+    sh 'kubectl apply -f deployment.yaml'
+})
             }
           }
         }
