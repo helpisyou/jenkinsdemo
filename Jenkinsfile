@@ -19,7 +19,8 @@ pipeline{
         // 定义第一个stage， 完成克隆源码的任务
         stage('Git'){
           steps{
-            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/helpisyou/jenkinsdemo.git'
+//            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/helpisyou/jenkinsdemo.git'
+              git branch: '${BRANCH}', 'https://github.com/helpisyou/jenkinsdemo.git'
           }
         }
 
