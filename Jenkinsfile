@@ -2,9 +2,9 @@ pipeline{
       // 定义groovy脚本中使用的环境变量
       environment{
         // 将构建任务中的构建参数转换为环境变量
-        ORIGIN_REPO =  sh(returnStdout: true,script: 'echo $origin_repo').trim()
-        REPO =  sh(returnStdout: true,script: 'echo $repo').trim()
-        BRANCH =  sh(returnStdout: true,script: 'echo $branch').trim()
+        //ORIGIN_REPO =  sh(returnStdout: true,script: 'echo $origin_repo').trim()
+        //REPO =  sh(returnStdout: true,script: 'echo $repo').trim()
+        //BRANCH =  sh(returnStdout: true,script: 'echo $branch').trim()
       }
 
       // 定义本次构建使用哪个标签的构建环境，本示例中为 “slave-pipeline”
@@ -20,7 +20,7 @@ pipeline{
         stage('Git'){
           steps{
 //            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/helpisyou/jenkinsdemo.git'
-              git branch: '${BRANCH}', url: 'https://github.com/helpisyou/jenkinsdemo.git'
+              git branch: 'master', url: 'https://github.com/helpisyou/jenkinsdemo.git'
           }
         }
 
