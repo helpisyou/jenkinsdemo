@@ -30,7 +30,9 @@ pipeline{
           steps {
             container('kubectl') {
               step(
-withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '3dc91eae-917f-4e81-b3dd-2d7e93b54374', namespace: 'cicd', serverUrl: 'https://kubernetes.default.svc.cluster.local:443') {
+//withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '3dc91eae-917f-4e81-b3dd-2d7e93b54374', namespace: 'cicd', serverUrl: 'https://kubernetes.default.svc.cluster.local:443') {
+
+withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '3dc91eae-917f-4e81-b3dd-2d7e93b54374', namespace: 'cicd', serverUrl: 'https://kubernetes.default.svc.cluster.local:443']]) {
     sh 'kubectl apply -f deployment.yaml'
 })
             }
